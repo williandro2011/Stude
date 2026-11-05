@@ -4,160 +4,268 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080d18">
-  <meta name="description" content="Stude.me — um novo espaço para aprender, descobrir e evoluir.">
-  <title>Stude.me — Em breve</title>
+  <meta name="theme-color" content="#080b14">
+  <meta name="description" content="Stude — Conhecimento em movimento. Um novo espaço para aprender, descobrir e evoluir.">
+  <meta property="og:title" content="Stude — Conhecimento em movimento">
+  <meta property="og:description" content="O conhecimento não tem limites. Descubra o próximo passo.">
+  <meta property="og:type" content="website">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <title>Stude — Conhecimento em movimento</title>
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 50% 110%, #142c50 0%, transparent 55%),
-        #080d18;
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-      padding: 24px;
-    }
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2300d9ff'/%3E%3Cstop offset='.55' stop-color='%235b72ff'/%3E%3Cstop offset='1' stop-color='%23b45cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M78 12H43C22 12 12 25 12 39c0 13 9 20 25 24l25 7c8 2 11 5 11 9 0 5-5 9-13 9H14v-18h43c-3-3-8-5-15-7l-12-3C12 55 5 48 5 37 5 19 20 5 42 5h36z'/%3E%3C/svg%3E">
 
-    .stars {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        radial-gradient(1px 1px at 10% 20%, #ffffff 100%, transparent),
-        radial-gradient(2px 2px at 80% 30%, #ffffff 100%, transparent),
-        radial-gradient(1px 1px at 40% 70%, #ffffff 100%, transparent),
-        radial-gradient(2px 2px at 65% 85%, #ffffff 100%, transparent),
-        radial-gradient(1px 1px at 90% 75%, #ffffff 100%, transparent);
-      opacity: .5;
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    .container {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 760px;
-      text-align: center;
-      animation: appear 1.2s ease both;
-    }
-
-    .logo {
-      font-size: clamp(52px, 10vw, 88px);
-      font-weight: 800;
-      letter-spacing: -5px;
-      background: linear-gradient(120deg, #ffffff 20%, #8cbaff 65%, #54d6ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 24px;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 9px 17px;
-      border: 1px solid rgba(112, 175, 255, .3);
-      border-radius: 50px;
-      color: #9fcaff;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 30px;
-      background: rgba(35, 91, 160, .12);
-    }
-
-    h1 {
-      font-size: clamp(30px, 6vw, 52px);
-      line-height: 1.15;
-      letter-spacing: -1.5px;
-      margin-bottom: 20px;
-    }
-
-    .description {
-      max-width: 530px;
-      margin: 0 auto;
-      color: #a8b5c9;
-      font-size: 17px;
-      line-height: 1.8;
-    }
-
-    .line {
-      width: 65px;
-      height: 3px;
-      border-radius: 10px;
-      margin: 38px auto;
-      background: linear-gradient(90deg, #568bff, #54d6ff);
-      box-shadow: 0 0 20px #368fff;
-    }
-
-    footer {
-      color: #64748b;
-      font-size: 12px;
-      letter-spacing: 1px;
-      margin-top: 50px;
-    }
-
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .logo {
-        letter-spacing: -3px;
-      }
-
-      .description {
-        font-size: 15px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
-  <div class="stars"></div>
+  <div class="noise" aria-hidden="true"></div>
 
-  <main class="container">
-    <div class="tag">Um novo começo</div>
+  <!-- INTRO CINEMATOGRÁFICA -->
+  <div class="intro-screen" id="intro" aria-label="Apresentação da marca Stude">
+    <div class="intro-light"></div>
 
-    <div class="logo">Stude.me</div>
+    <svg class="intro-mark" viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="introGradient" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#00e5ff"/>
+          <stop offset="52%" stop-color="#5878ff"/>
+          <stop offset="100%" stop-color="#bd65ff"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#introGradient)"
+        d="M78 12H43C22 12 12 25 12 39c0 13 9 20 25 24l25 7c8 2 11 5 11 9 0 5-5 9-13 9H14v-18h43c-3-3-8-5-15-7l-12-3C12 55 5 48 5 37 5 19 20 5 42 5h36z"/>
+    </svg>
 
-    <h1>O futuro da aprendizagem começa aqui.</h1>
+    <div class="intro-wordmark">Stude<span>.</span></div>
+    <button class="intro-skip" id="skipIntro" type="button">Pular introdução <span>↗</span></button>
+  </div>
 
-    <p class="description">
-      Estamos construindo um novo espaço para aprender,
-      explorar ideias e transformar conhecimento em possibilidades.
-      <br><br>
-      Em breve, você descobrirá tudo o que estamos preparando.
-    </p>
+  <!-- NAVEGAÇÃO -->
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Stude — início">
+      <svg class="brand-symbol" viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <linearGradient id="brandGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00e5ff"/>
+            <stop offset="52%" stop-color="#5878ff"/>
+            <stop offset="100%" stop-color="#bd65ff"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#brandGradient)"
+          d="M78 12H43C22 12 12 25 12 39c0 13 9 20 25 24l25 7c8 2 11 5 11 9 0 5-5 9-13 9H14v-18h43c-3-3-8-5-15-7l-12-3C12 55 5 48 5 37 5 19 20 5 42 5h36z"/>
+      </svg>
+      <span>Stude<span class="brand-dot">.</span></span>
+    </a>
 
-    <div class="line"></div>
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <a href="#manifesto">Manifesto</a>
+      <a href="#universo">Universo Stude</a>
+      <a href="#visao">Nossa visão</a>
+    </nav>
 
-    <footer>
-      © 2026 STUDE.ME · TODOS OS DIREITOS RESERVADOS
-    </footer>
+    <a class="header-cta" href="#universo">
+      Explorar <span>↗</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Menu móvel">
+    <a href="#manifesto">Manifesto</a>
+    <a href="#universo">Universo Stude</a>
+    <a href="#visao">Nossa visão</a>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-orbit orbit-one"></div>
+      <div class="hero-orbit orbit-two"></div>
+      <div class="hero-glow"></div>
+
+      <div class="hero-content reveal">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          UM NOVO UNIVERSO DE POSSIBILIDADES
+        </div>
+
+        <h1>
+          O conhecimento<br>
+          não tem <span class="gradient-text">limites.</span>
+        </h1>
+
+        <p class="hero-description">
+          Um novo espaço está surgindo. Para quem questiona,
+          descobre, aprende e acredita que sempre existe um
+          próximo passo.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#manifesto" class="button-primary">
+            Descubra o Stude <span>↗</span>
+          </a>
+          <a href="#universo" class="button-quiet">
+            Conheça nosso universo <span>↓</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-bottom">
+        <span>CONHECIMENTO EM MOVIMENTO</span>
+        <span class="scroll-indicator">ROLE PARA EXPLORAR <i>↓</i></span>
+        <span>BRASIL · 2026</span>
+      </div>
+
+      <div class="hero-index">01 <span>/</span> 04</div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto section" id="manifesto">
+      <div class="section-label reveal">
+        <span>01 — NOSSA ESSÊNCIA</span>
+        <span class="label-line"></span>
+      </div>
+
+      <div class="manifesto-grid">
+        <div class="manifesto-side reveal">
+          <span class="small-caption">UMA IDEIA EM MOVIMENTO</span>
+          <div class="vertical-mark">STUDE / MANIFESTO</div>
+        </div>
+
+        <div class="manifesto-main reveal">
+          <h2>
+            Aprender não é<br>
+            chegar ao fim.<br>
+            É descobrir <span class="gradient-text">até onde<br>você pode ir.</span>
+          </h2>
+
+          <p>
+            Acreditamos que a educação deve abrir caminhos,
+            despertar perguntas e ampliar horizontes.
+            Não queremos apenas transmitir conhecimento.
+            Queremos ajudar a transformar o modo como as
+            pessoas se relacionam com ele.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIVERSO -->
+    <section class="universe section" id="universo">
+      <div class="section-label reveal">
+        <span>02 — UM UNIVERSO, MUITAS POSSIBILIDADES</span>
+        <span class="label-line"></span>
+      </div>
+
+      <div class="universe-heading reveal">
+        <h2>Conhecimento em<br><span class="gradient-text">todas as direções.</span></h2>
+        <p>
+          Diferentes caminhos. Uma mesma essência:
+          tornar o aprendizado uma experiência mais rica.
+        </p>
+      </div>
+
+      <div class="universe-grid">
+        <article class="universe-card card-study reveal">
+          <div class="card-top">
+            <span class="card-number">01</span>
+            <span class="card-symbol">S+</span>
+          </div>
+          <div>
+            <span class="card-category">APRENDIZAGEM</span>
+            <h3>Study<span>+</span></h3>
+            <p>Um espaço para aprender, explorar conteúdos e desenvolver conhecimento.</p>
+          </div>
+          <span class="card-arrow">↗</span>
+        </article>
+
+        <article class="universe-card card-praesium reveal">
+          <div class="card-top">
+            <span class="card-number">02</span>
+            <span class="card-symbol">P.</span>
+          </div>
+          <div>
+            <span class="card-category">PRÁTICA & EVOLUÇÃO</span>
+            <h3>PRAESIUM</h3>
+            <p>O conhecimento colocado à prova, com desafios e novas conquistas.</p>
+          </div>
+          <span class="card-arrow">↗</span>
+        </article>
+
+        <article class="universe-card card-sophratio reveal">
+          <div class="card-top">
+            <span class="card-number">03</span>
+            <span class="card-symbol">文</span>
+          </div>
+          <div>
+            <span class="card-category">IDIOMAS & CULTURA</span>
+            <h3>Sophratio</h3>
+            <p>Novas línguas, novas perspectivas e conexões com o mundo.</p>
+          </div>
+          <span class="card-arrow">↗</span>
+        </article>
+
+        <article class="universe-card card-cliralq reveal">
+          <div class="card-top">
+            <span class="card-number">04</span>
+            <span class="card-symbol">C.</span>
+          </div>
+          <div>
+            <span class="card-category">DESCOBERTA</span>
+            <h3>Cliralq</h3>
+            <p>Um horizonte de possibilidades para experiências de aprendizagem.</p>
+          </div>
+          <span class="card-arrow">↗</span>
+        </article>
+      </div>
+
+      <p class="universe-footnote reveal">
+        UM ECOSSISTEMA EM CONSTRUÇÃO. UM FUTURO EM DESCOBERTA.
+      </p>
+    </section>
+
+    <!-- VISÃO -->
+    <section class="vision section" id="visao">
+      <div class="vision-orb"></div>
+
+      <div class="section-label reveal">
+        <span>03 — NOSSA VISÃO</span>
+        <span class="label-line"></span>
+      </div>
+
+      <div class="vision-content reveal">
+        <span class="small-caption">O PRÓXIMO PASSO COMEÇA AGORA</span>
+        <h2>O futuro não<br>espera por respostas.<br><span class="gradient-text">Ele começa com perguntas.</span></h2>
+        <p>
+          Estamos preparando algo novo. Uma experiência
+          construída para acompanhar a curiosidade e
+          ampliar as possibilidades de aprender.
+        </p>
+        <a href="#top" class="button-primary">
+          Voltar ao início <span>↑</span>
+        </a>
+      </div>
+    </section>
   </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <a class="footer-brand" href="#top">
+      <span class="footer-symbol">S</span>
+      <span>Stude<span class="brand-dot">.</span></span>
+    </a>
+
+    <span class="footer-copy">© 2026 STUDE.ME</span>
+    <span class="footer-note">CONHECIMENTO EM MOVIMENTO.</span>
+  </footer>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
 </body>
 </html>
