@@ -1,226 +1,163 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080d18">
-  <meta name="description" content="Stude.me — um novo espaço para aprender, descobrir e evoluir. Em breve.">
-  <title>Stude.me — Estamos chegando</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Stude.me — um novo espaço para aprender, descobrir e evoluir.">
+  <title>Stude.me — Em breve</title>
+
   <style>
-    :root {
-      color-scheme: dark;
-      --ink: #f2f5ff;
-      --muted: #a5b1c7;
-      --blue: #8ebdff;
-      --cyan: #8ce7e9;
-      --line: rgba(190, 213, 255, .16);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    * { box-sizing: border-box; }
-    html { min-height: 100%; background: #080d18; }
+
     body {
       min-height: 100vh;
-      margin: 0;
-      overflow-x: hidden;
-      color: var(--ink);
-      font-family: "DM Sans", sans-serif;
-      background:
-        radial-gradient(ellipse at 75% 45%, rgba(33, 76, 125, .22), transparent 38%),
-        radial-gradient(ellipse at 16% 85%, rgba(34, 61, 104, .17), transparent 35%),
-        linear-gradient(135deg, #080d18 0%, #0b1424 52%, #080d18 100%);
-    }
-    body::before {
-      content: "";
-      position: fixed; inset: 0; pointer-events: none; opacity: .22;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
-      mix-blend-mode: soft-light;
-    }
-    .stars, .stars::before, .stars::after {
-      position: fixed; inset: 0; content: ""; pointer-events: none;
-      background-repeat: repeat; background-size: 340px 340px;
-    }
-    .stars {
-      opacity: .55;
-      background-image:
-        radial-gradient(1px 1px at 28px 44px, #fff 98%, transparent),
-        radial-gradient(1px 1px at 180px 90px, #b8d9ff 98%, transparent),
-        radial-gradient(1.5px 1.5px at 290px 250px, #fff 98%, transparent),
-        radial-gradient(1px 1px at 95px 280px, #c8e9ff 98%, transparent);
-    }
-    .stars::before { background-image: radial-gradient(1px 1px at 70px 150px, #fff 98%, transparent), radial-gradient(1px 1px at 240px 35px, #d9eaff 98%, transparent); transform: translate(90px, 35px); opacity: .5; }
-    .stars::after { background-image: radial-gradient(1px 1px at 130px 210px, #fff 98%, transparent), radial-gradient(1px 1px at 315px 125px, #a8d8ff 98%, transparent); transform: translate(-35px, 80px); opacity: .45; }
-    .scene {
-      position: fixed; inset: 0; overflow: hidden; pointer-events: none;
-      perspective: 1000px;
-    }
-    .glow {
-      position: absolute; width: min(72vw, 900px); aspect-ratio: 1;
-      right: -10vw; top: 50%; transform: translateY(-50%);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(68, 139, 205, .16), rgba(40, 87, 142, .07) 35%, transparent 68%);
-      filter: blur(16px);
-    }
-    .planet-wrap {
-      position: absolute; width: clamp(360px, 57vw, 760px); aspect-ratio: 1;
-      right: clamp(-150px, 1vw, 70px); top: 50%; transform: translateY(-48%);
-      animation: float 12s ease-in-out infinite;
-    }
-    .planet {
-      position: absolute; inset: 9%;
-      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
       background:
-        radial-gradient(ellipse at 29% 28%, rgba(181, 220, 255, .9) 0%, rgba(111, 165, 215, .36) 12%, transparent 32%),
-        radial-gradient(ellipse at 67% 73%, rgba(11, 34, 65, .1), rgba(4, 13, 29, .92) 70%),
-        linear-gradient(145deg, #6d9dc7, #244a75 45%, #08182f 78%);
-      box-shadow:
-        inset -55px -25px 95px rgba(0, 4, 15, .9),
-        inset 18px 12px 45px rgba(194, 226, 255, .2),
-        0 0 65px rgba(75, 151, 220, .18);
+        radial-gradient(ellipse at 50% 110%, #142c50 0%, transparent 55%),
+        #080d18;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 24px;
     }
-    .planet::before {
-      content: ""; position: absolute; inset: -12%;
-      background:
-        radial-gradient(ellipse at 30% 37%, transparent 0 15%, rgba(211, 231, 255, .17) 16% 17%, transparent 18% 24%, rgba(14, 35, 62, .22) 25% 27%, transparent 28%),
-        repeating-linear-gradient(168deg, transparent 0 18px, rgba(211, 232, 255, .08) 19px, transparent 22px, transparent 38px);
-      filter: blur(5px); opacity: .75; transform: rotate(-17deg);
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, #ffffff 100%, transparent),
+        radial-gradient(2px 2px at 80% 30%, #ffffff 100%, transparent),
+        radial-gradient(1px 1px at 40% 70%, #ffffff 100%, transparent),
+        radial-gradient(2px 2px at 65% 85%, #ffffff 100%, transparent),
+        radial-gradient(1px 1px at 90% 75%, #ffffff 100%, transparent);
+      opacity: .5;
     }
-    .planet::after {
-      content: ""; position: absolute; inset: 0; border-radius: inherit;
-      background: linear-gradient(105deg, rgba(224, 242, 255, .28), transparent 28% 58%, rgba(0, 5, 17, .52) 83%);
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 760px;
+      text-align: center;
+      animation: appear 1.2s ease both;
     }
-    .atmosphere {
-      position: absolute; inset: 5%; border-radius: 50%;
-      border: 1px solid rgba(155, 211, 255, .35);
-      box-shadow: 0 0 34px rgba(105, 183, 255, .18), inset 0 0 22px rgba(126, 195, 255, .1);
+
+    .logo {
+      font-size: clamp(52px, 10vw, 88px);
+      font-weight: 800;
+      letter-spacing: -5px;
+      background: linear-gradient(120deg, #ffffff 20%, #8cbaff 65%, #54d6ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 24px;
     }
-    .orbit {
-      position: absolute; width: 125%; height: 34%; left: -12.5%; top: 34%;
-      border: 1px solid rgba(174, 215, 255, .23); border-radius: 50%;
-      transform: rotate(-21deg);
-      box-shadow: 0 0 18px rgba(116, 190, 255, .08);
+
+    .tag {
+      display: inline-block;
+      padding: 9px 17px;
+      border: 1px solid rgba(112, 175, 255, .3);
+      border-radius: 50px;
+      color: #9fcaff;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      background: rgba(35, 91, 160, .12);
     }
-    .moon {
-      position: absolute; width: 11%; aspect-ratio: 1; right: 5%; top: 16%;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 28%, #f0f5fa, #9eafc4 45%, #53647a 78%, #26364b);
-      box-shadow: 0 0 30px rgba(199, 225, 255, .22), inset -10px -7px 15px rgba(5, 15, 30, .55);
-    }
-    .moon::after { content:""; position:absolute; inset:0; border-radius:50%; background: radial-gradient(circle at 62% 34%, rgba(39,57,77,.25) 0 5%, transparent 6%), radial-gradient(circle at 38% 68%, rgba(39,57,77,.2) 0 8%, transparent 9%); }
-    .content {
-      position: relative; z-index: 2; min-height: 100vh;
-      width: min(1180px, calc(100% - 64px)); margin: 0 auto;
-      display: flex; flex-direction: column; justify-content: space-between;
-      padding: 42px 0 30px;
-    }
-    header { display: flex; align-items: center; justify-content: space-between; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
-    .mark {
-      width: 38px; height: 38px; display: grid; place-items: center;
-      border: 1px solid rgba(164, 207, 255, .42); border-radius: 12px;
-      background: linear-gradient(145deg, rgba(132, 190, 255, .18), rgba(132, 190, 255, .035));
-      box-shadow: inset 0 1px rgba(255,255,255,.16), 0 8px 28px rgba(0,0,0,.18);
-    }
-    .mark svg { width: 21px; height: 21px; }
-    .wordmark { font: 800 21px/1 "Manrope", sans-serif; letter-spacing: -.9px; }
-    .wordmark span { color: #9fc9ff; }
-    .top-note {
-      color: #aebbd0; font-size: 11px; letter-spacing: .19em;
-      text-transform: uppercase; display: flex; align-items: center; gap: 10px;
-    }
-    .top-note::before { content:""; width: 24px; height: 1px; background: #83b8f3; opacity: .7; }
-    main { max-width: 590px; padding: 70px 0 90px; }
-    .eyebrow {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
-      color: #a9c9ed; font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
-    }
-    .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: #91d9e5; box-shadow: 0 0 12px #91d9e5; }
+
     h1 {
-      margin: 0; font: 600 clamp(48px, 6.4vw, 78px)/1.04 "Manrope", sans-serif;
-      letter-spacing: -.065em; max-width: 650px;
+      font-size: clamp(30px, 6vw, 52px);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
     }
-    h1 em { color: #a9cefb; font-style: normal; }
-    .lead {
-      max-width: 440px; margin: 26px 0 0; color: #b5c1d4;
-      font-size: clamp(15px, 1.5vw, 17px); line-height: 1.85;
+
+    .description {
+      max-width: 530px;
+      margin: 0 auto;
+      color: #a8b5c9;
+      font-size: 17px;
+      line-height: 1.8;
     }
-    .rule { width: 56px; height: 1px; margin: 34px 0 22px; background: linear-gradient(90deg, #9ccaff, transparent); }
-    .manifesto {
-      color: #e1eaf7; font: 500 13px/1.8 "Manrope", sans-serif;
-      letter-spacing: .025em;
+
+    .line {
+      width: 65px;
+      height: 3px;
+      border-radius: 10px;
+      margin: 38px auto;
+      background: linear-gradient(90deg, #568bff, #54d6ff);
+      box-shadow: 0 0 20px #368fff;
     }
-    .manifesto span { color: #8da8c9; }
+
     footer {
-      display: flex; justify-content: space-between; align-items: center; gap: 20px;
-      border-top: 1px solid var(--line); padding-top: 18px;
-      color: #71829b; font-size: 11px; letter-spacing: .04em;
+      color: #64748b;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-top: 50px;
     }
-    .footer-right { color: #94a8c4; }
-    @keyframes float { 0%,100% { transform: translateY(-48%) rotate(-2deg); } 50% { transform: translateY(-50%) rotate(1deg); } }
-    @media (max-width: 760px) {
-      .content { width: min(100% - 40px, 560px); padding: 26px 0 22px; }
-      .top-note { font-size: 9px; letter-spacing: .12em; }
-      .planet-wrap { width: 430px; right: -210px; top: 49%; opacity: .48; }
-      .glow { width: 520px; right: -280px; top: 52%; }
-      main { padding: 100px 0 115px; }
-      h1 { font-size: clamp(48px, 12vw, 68px); }
-      .lead { max-width: 390px; }
-      footer { align-items: flex-start; flex-direction: column; gap: 8px; }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    @media (max-width: 390px) {
-      .top-note { display: none; }
-      main { padding-top: 80px; }
-      .wordmark { font-size: 19px; }
+
+    @media (max-width: 480px) {
+      .logo {
+        letter-spacing: -3px;
+      }
+
+      .description {
+        font-size: 15px;
+      }
     }
+
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
+      *, *::before, *::after {
+        animation: none !important;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="stars" aria-hidden="true"></div>
-  <div class="scene" aria-hidden="true">
-    <div class="glow"></div>
-    <div class="planet-wrap">
-      <div class="orbit"></div>
-      <div class="planet"></div>
-      <div class="atmosphere"></div>
-      <div class="moon"></div>
-    </div>
-  </div>
+  <div class="stars"></div>
 
-  <div class="content">
-    <header>
-      <a class="brand" href="/" aria-label="Stude.me">
-        <span class="mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M4 17.5 10.7 5l3.1 5.8L20 17.5H4Z" stroke="#C5E1FF" stroke-width="1.35" stroke-linejoin="round"/>
-            <path d="m8.1 17.5 4.2-7.1 4.1 7.1" stroke="#8CE7E9" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="18.2" cy="5.8" r="1.25" fill="#8CE7E9"/>
-          </svg>
-        </span>
-        <span class="wordmark">stude<span>.me</span></span>
-      </a>
-      <div class="top-note">Um novo capítulo começa</div>
-    </header>
+  <main class="container">
+    <div class="tag">Um novo começo</div>
 
-    <main>
-      <div class="eyebrow"><span class="dot"></span> Em construção · 2026</div>
-      <h1>O próximo passo<br>começa com <em>conhecimento.</em></h1>
-      <p class="lead">
-        Estamos preparando um novo espaço para aprender, explorar ideias e transformar curiosidade em possibilidades.
-        Ainda estamos nos bastidores — mas já estamos construindo o que vem depois.
-      </p>
-      <div class="rule"></div>
-      <div class="manifesto">Aprender não é chegar ao fim.<br><span>É descobrir até onde você pode ir.</span></div>
-    </main>
+    <div class="logo">Stude.me</div>
+
+    <h1>O futuro da aprendizagem começa aqui.</h1>
+
+    <p class="description">
+      Estamos construindo um novo espaço para aprender,
+      explorar ideias e transformar conhecimento em possibilidades.
+      <br><br>
+      Em breve, você descobrirá tudo o que estamos preparando.
+    </p>
+
+    <div class="line"></div>
 
     <footer>
-      <span>© 2026 Stude.me · Todos os direitos reservados</span>
-      <span class="footer-right">Aprenda. Descubra. Evolua.</span>
+      © 2026 STUDE.ME · TODOS OS DIREITOS RESERVADOS
     </footer>
-  </div>
+  </main>
 </body>
 </html>
