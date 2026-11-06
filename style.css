@@ -1405,3 +1405,245 @@ button {
     letter-spacing: .8px;
   }
 }
+
+
+/* =========================================
+   STUDE — LIGHT ARCHITECTURAL IDENTITY
+   ========================================= */
+
+:root {
+  --bg: #F4F2ED;
+  --bg-light: #EAECEF;
+  --white: #18243A;
+  --muted: #59677A;
+  --muted-dark: #8791A0;
+  --cyan: #4A9EAD;
+  --blue: #5579A8;
+  --violet: #8B78AE;
+  --line: rgba(24, 36, 58, .13);
+}
+
+/* FUNDO GLOBAL */
+
+body {
+  background: #F4F2ED;
+  color: #18243A;
+}
+
+.grain {
+  opacity: .018;
+}
+
+/* INTRO */
+
+.intro {
+  background: #F4F2ED;
+}
+
+.intro-atmosphere {
+  background: radial-gradient(
+    circle,
+    rgba(85, 121, 168, .15),
+    transparent 68%
+  );
+}
+
+.intro-caption {
+  color: #69788D;
+}
+
+.skip-intro {
+  color: #59677A;
+}
+
+.skip-intro:hover {
+  color: #18243A;
+}
+
+/* CABEÇALHO */
+
+.header {
+  background: rgba(244, 242, 237, .88);
+  border-bottom-color: rgba(24, 36, 58, .10);
+}
+
+.nav a {
+  color: #657185;
+}
+
+.nav a:hover {
+  color: #18243A;
+}
+
+.header-status {
+  color: #43556D;
+  border-color: rgba(74, 158, 173, .35);
+  background: rgba(74, 158, 173, .07);
+}
+
+/* HERO */
+
+.construction-hero::before {
+  background:
+    radial-gradient(
+      ellipse at 80% 45%,
+      rgba(85, 121, 168, .12),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #F7F5F0,
+      #EDF0F2 65%,
+      #E8EDF1
+    );
+}
+
+.hero-grid {
+  opacity: .32;
+  background-image:
+    linear-gradient(rgba(24, 36, 58, .055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 36, 58, .055) 1px, transparent 1px);
+}
+
+.ambient-blue {
+  background: rgba(85, 121, 168, .13);
+}
+
+.ambient-violet {
+  background: rgba(139, 120, 174, .10);
+}
+
+.eyebrow,
+.worksite-label,
+.worksite-caption {
+  color: #68768B;
+}
+
+.hero-description,
+.construction-status p {
+  color: #647185;
+}
+
+.hero-copy h1 {
+  color: #18243A;
+}
+
+.gradient-text {
+  background-image: linear-gradient(
+    105deg,
+    #5579A8,
+    #398E9F 55%,
+    #8B78AE
+  );
+}
+
+.construction-status {
+  background: linear-gradient(
+    90deg,
+    rgba(74, 158, 173, .10),
+    transparent
+  );
+}
+
+.status-heading {
+  color: #33455E;
+}
+
+.discover-link {
+  color: #34465F;
+}
+
+.hero-footer,
+.hero-index {
+  color: #778398;
+}
+
+/* SEÇÕES */
+
+.manifesto {
+  background: #EAECEF;
+}
+
+.manifesto-main p,
+.ecosystem-heading p {
+  color: #647185;
+}
+
+.aside-caption,
+.aside-vertical {
+  color: #758197;
+}
+
+.ecosystem {
+  background:
+    radial-gradient(
+      ellipse at 90% 40%,
+      rgba(85, 121, 168, .09),
+      transparent 42%
+    ),
+    #F4F2ED;
+}
+
+.ecosystem-item > p {
+  color: #647185;
+}
+
+.ecosystem-category,
+.ecosystem-index,
+.ecosystem-state {
+  color: #718096;
+}
+
+.ecosystem-item:hover {
+  background: rgba(85, 121, 168, .045);
+}
+
+.ecosystem-foot {
+  color: #718096;
+}
+
+/* ENCERRAMENTO */
+
+.closing-section {
+  background: #E9EDF0;
+}
+
+.closing-glow {
+  background: radial-gradient(
+    circle,
+    rgba(85, 121, 168, .17),
+    transparent 68%
+  );
+}
+
+.closing-overline,
+.closing-content p {
+  color: #68768B;
+}
+
+.closing-status {
+  color: #40536C;
+}
+
+/* RODAPÉ */
+
+.footer {
+  background: #E5E8E9;
+  border-top-color: rgba(24, 36, 58, .12);
+}
+
+.footer-center,
+.footer-right {
+  color: #68768B;
+}
+
+/* MENU MOBILE */
+
+.mobile-menu {
+  background: rgba(244, 242, 237, .98);
+}
+
+.mobile-menu a {
+  color: #34465F;
+}
+
