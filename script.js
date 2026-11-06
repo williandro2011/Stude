@@ -2,66 +2,65 @@
 document.addEventListener("DOMContentLoaded", () => {
   const intro = document.getElementById("intro");
   const skipIntro = document.getElementById("skipIntro");
-  const menuToggle = document.getElementById("menuToggle");
-  const mobileNav = document.getElementById("mobileNav");
-  const cursorGlow = document.getElementById("cursorGlow");
 
-  // INTRO CINEMATOGRÁFICA
-  let introClosed = false;
+  const menuButton = document.getElementById("menuButton");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-  function closeIntro() {
-    if (introClosed || !intro) return;
+  let introFinished = false;
 
-    introClosed = true;
-    intro.classList.add("finished");
+  // INTRO
+  function finishIntro() {
+    if (!intro || introFinished) return;
+
+    introFinished = true;
+    intro.classList.add("is-done");
     document.body.classList.remove("intro-running");
 
     window.setTimeout(() => {
       intro.remove();
-    }, 900);
+    }, 950);
   }
 
   if (intro) {
-    document.body.classList.add("intro-running");
-
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
     if (reducedMotion) {
-      closeIntro();
+      finishIntro();
     } else {
-      window.setTimeout(closeIntro, 4650);
+      window.setTimeout(finishIntro, 5300);
     }
   }
 
-  skipIntro?.addEventListener("click", closeIntro);
+  skipIntro?.addEventListener("click", finishIntro);
 
   // MENU MOBILE
-  function closeMobileMenu() {
-    menuToggle?.setAttribute("aria-expanded", "false");
-    mobileNav?.classList.remove("open");
+  function closeMenu() {
+    menuButton?.setAttribute("aria-expanded", "false");
+    mobileMenu?.classList.remove("open");
   }
 
-  menuToggle?.addEventListener("click", () => {
-    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+  menuButton?.addEventListener("click", () => {
+    const opened =
+      menuButton.getAttribute("aria-expanded") === "true";
 
-    menuToggle.setAttribute("aria-expanded", String(!isOpen));
-    mobileNav?.classList.toggle("open", !isOpen);
+    menuButton.setAttribute("aria-expanded", String(!opened));
+    mobileMenu?.classList.toggle("open", !opened);
   });
 
-  mobileNav?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMobileMenu);
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
   });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      closeMobileMenu();
-      closeIntro();
+      closeMenu();
+      finishIntro();
     }
   });
 
-  // REVELAÇÃO DAS SEÇÕES DURANTE O SCROLL
+  // REVELAÇÃO DAS SEÇÕES
   const revealElements = document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
@@ -76,37 +75,36 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         threshold: 0.12,
-        rootMargin: "0px 0px -35px 0px"
+        rootMargin: "0px 0px -40px 0px"
       }
     );
 
-    revealElements.forEach((element) => observer.observe(element));
+    revealElements.forEach((element) => {
+      observer.observe(element);
+    });
   } else {
-    revealElements.forEach((element) => element.classList.add("visible"));
-  }
-
-  // BRILHO DISCRETO QUE ACOMPANHA O CURSOR
-  const canUsePointer = window.matchMedia(
-    "(hover: hover) and (pointer: fine)"
-  ).matches;
-
-  if (canUsePointer && cursorGlow) {
-    document.addEventListener("pointermove", (event) => {
-      cursorGlow.style.left = `${event.clientX}px`;
-      cursorGlow.style.top = `${event.clientY}px`;
-      cursorGlow.style.opacity = "1";
-    });
-
-    document.addEventListener("pointerleave", () => {
-      cursorGlow.style.opacity = "0";
+    revealElements.forEach((element) => {
+      element.classList.add("visible");
     });
   }
 
-  // ANO AUTOMÁTICO NO RODAPÉ
-  const footerCopy = document.querySelector(".footer-copy");
+  // ANO AUTOMÁTICO
+  const year = document.getElementById("year");
 
-  if (footerCopy) {
-    footerCopy.textContent =
-      `© ${new Date().getFullYear()} STUDE.ME`;
+  if (year) {
+    year.textContent = new Date().getFullYear();
   }
+
+  // VERIFICAÇÃO DAS LOGOS
+  ["isotipo.png", "logo-stude.png"].forEach((file) => {
+    const image = new Image();
+
+    image.onerror = () => {
+      console.warn(
+        `Stude: não foi possível carregar ${file}. Confira o nome e a localização do arquivo.`
+      );
+    };
+
+    image.src = file;
+  });
 });
