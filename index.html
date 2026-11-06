@@ -5,14 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080b14">
-  <meta name="description" content="Stude — Conhecimento em movimento. Um novo espaço para aprender, descobrir e evoluir.">
-  <meta property="og:title" content="Stude — Conhecimento em movimento">
-  <meta property="og:description" content="O conhecimento não tem limites. Descubra o próximo passo.">
+
+  <meta name="description" content="Stude — Estamos construindo um novo universo de aprendizagem. Em breve.">
+  <meta property="og:title" content="Stude — Estamos construindo">
+  <meta property="og:description" content="Um novo universo de aprendizagem está tomando forma.">
   <meta property="og:type" content="website">
 
-  <title>Stude — Conhecimento em movimento</title>
+  <title>Stude — Estamos construindo</title>
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2300d9ff'/%3E%3Cstop offset='.55' stop-color='%235b72ff'/%3E%3Cstop offset='1' stop-color='%23b45cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M78 12H43C22 12 12 25 12 39c0 13 9 20 25 24l25 7c8 2 11 5 11 9 0 5-5 9-13 9H14v-18h43c-3-3-8-5-15-7l-12-3C12 55 5 48 5 37 5 19 20 5 42 5h36z'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="isotipo.png">
+  <link rel="apple-touch-icon" href="isotipo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,250 +24,333 @@
   <script src="script.js" defer></script>
 </head>
 
-<body>
-  <div class="noise" aria-hidden="true"></div>
+<body class="intro-running">
 
-  <!-- INTRO CINEMATOGRÁFICA -->
-  <div class="intro-screen" id="intro" aria-label="Apresentação da marca Stude">
-    <div class="intro-light"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-    <svg class="intro-mark" viewBox="0 0 100 100" aria-hidden="true">
-      <defs>
-        <linearGradient id="introGradient" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#00e5ff"/>
-          <stop offset="52%" stop-color="#5878ff"/>
-          <stop offset="100%" stop-color="#bd65ff"/>
-        </linearGradient>
-      </defs>
-      <path fill="url(#introGradient)"
-        d="M78 12H43C22 12 12 25 12 39c0 13 9 20 25 24l25 7c8 2 11 5 11 9 0 5-5 9-13 9H14v-18h43c-3-3-8-5-15-7l-12-3C12 55 5 48 5 37 5 19 20 5 42 5h36z"/>
-    </svg>
+  <!-- INTRO -->
+  <div class="intro" id="intro" aria-label="Apresentação Stude">
+    <div class="intro-atmosphere"></div>
+    <div class="intro-flash"></div>
 
-    <div class="intro-wordmark">Stude<span>.</span></div>
-    <button class="intro-skip" id="skipIntro" type="button">Pular introdução <span>↗</span></button>
+    <div class="intro-curtain" id="introCurtain">
+      <img src="isotipo.png" alt="" class="intro-isotype">
+    </div>
+
+    <div class="intro-brand" id="introBrand">
+      <img src="logo-stude.png" alt="Stude">
+    </div>
+
+    <div class="intro-caption" id="introCaption">
+      <span>UM NOVO UNIVERSO ESTÁ TOMANDO FORMA</span>
+    </div>
+
+    <button class="skip-intro" id="skipIntro" type="button">
+      Pular introdução <span>↗</span>
+    </button>
   </div>
 
-  <!-- NAVEGAÇÃO -->
-  <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Stude — início">
-      <svg class="brand-symbol" viewBox="0 0 100 100" aria-hidden="true">
-        <defs>
-          <linearGradient id="brandGradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#00e5ff"/>
-            <stop offset="52%" stop-color="#5878ff"/>
-            <stop offset="100%" stop-color="#bd65ff"/>
-          </linearGradient>
-        </defs>
-        <path fill="url(#brandGradient)"
-          d="M78 12H43C22 12 12 25 12 39c0 13 9 20 25 24l25 7c8 2 11 5 11 9 0 5-5 9-13 9H14v-18h43c-3-3-8-5-15-7l-12-3C12 55 5 48 5 37 5 19 20 5 42 5h36z"/>
-      </svg>
-      <span>Stude<span class="brand-dot">.</span></span>
+  <!-- HEADER -->
+  <header class="header">
+    <a href="#inicio" class="header-brand" aria-label="Stude — início">
+      <img src="logo-stude.png" alt="Stude" class="header-logo">
     </a>
 
-    <nav class="desktop-nav" aria-label="Navegação principal">
-      <a href="#manifesto">Manifesto</a>
-      <a href="#universo">Universo Stude</a>
+    <nav class="nav">
+      <a href="#construcao">A construção</a>
+      <a href="#universo">O universo</a>
       <a href="#visao">Nossa visão</a>
     </nav>
 
-    <a class="header-cta" href="#universo">
-      Explorar <span>↗</span>
+    <a href="#construcao" class="header-status">
+      <span class="status-dot"></span>
+      EM CONSTRUÇÃO
     </a>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
-      <span></span><span></span>
+    <button class="menu-button" id="menuButton" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
     </button>
   </header>
 
-  <nav class="mobile-nav" id="mobileNav" aria-label="Menu móvel">
-    <a href="#manifesto">Manifesto</a>
-    <a href="#universo">Universo Stude</a>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#construcao">A construção</a>
+    <a href="#universo">O universo</a>
     <a href="#visao">Nossa visão</a>
   </nav>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-orbit orbit-one"></div>
-      <div class="hero-orbit orbit-two"></div>
-      <div class="hero-glow"></div>
+  <main id="inicio">
 
-      <div class="hero-content reveal">
-        <div class="eyebrow">
-          <span class="eyebrow-dot"></span>
-          UM NOVO UNIVERSO DE POSSIBILIDADES
+    <!-- HERO / CANTEIRO DE OBRAS -->
+    <section class="construction-hero" id="construcao">
+
+      <div class="hero-grid"></div>
+      <div class="ambient ambient-blue"></div>
+      <div class="ambient ambient-violet"></div>
+
+      <div class="hero-copy">
+        <div class="eyebrow reveal">
+          <span class="live-dot"></span>
+          <span>PROJETO EM DESENVOLVIMENTO</span>
+          <span class="eyebrow-line"></span>
+          <span class="eyebrow-year">2026</span>
         </div>
 
-        <h1>
-          O conhecimento<br>
-          não tem <span class="gradient-text">limites.</span>
+        <h1 class="reveal">
+          Estamos<br>
+          construindo<br>
+          <span class="gradient-text">algo maior.</span>
         </h1>
 
-        <p class="hero-description">
-          Um novo espaço está surgindo. Para quem questiona,
-          descobre, aprende e acredita que sempre existe um
-          próximo passo.
+        <p class="hero-description reveal">
+          Um novo universo de aprendizagem está tomando forma.
+          Estamos trabalhando em cada detalhe para criar uma
+          experiência que amplie horizontes, desperte curiosidade
+          e transforme possibilidades em caminhos.
         </p>
 
-        <div class="hero-actions">
-          <a href="#manifesto" class="button-primary">
-            Descubra o Stude <span>↗</span>
-          </a>
-          <a href="#universo" class="button-quiet">
-            Conheça nosso universo <span>↓</span>
-          </a>
+        <div class="construction-status reveal">
+          <div class="status-heading">
+            <span class="status-icon">✳</span>
+            <span>O STUDE ESTÁ EM CONSTRUÇÃO</span>
+          </div>
+          <p>
+            Ainda estamos preparando o terreno. Em breve,
+            você poderá conhecer tudo o que está nascendo por aqui.
+          </p>
+        </div>
+
+        <a href="#universo" class="discover-link reveal">
+          Descubra o que estamos preparando
+          <span>↓</span>
+        </a>
+      </div>
+
+      <!-- ILUSTRAÇÃO DO MURO -->
+      <div class="worksite" aria-label="Ilustração de um muro parcialmente construído">
+
+        <div class="worksite-label">
+          <span class="label-dot"></span>
+          <span>STUDE / OBRA Nº 001</span>
+        </div>
+
+        <div class="wall-scene">
+          <div class="wall-shadow"></div>
+
+          <div class="wall">
+            <div class="wall-row row-1">
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="wall-row row-2">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="wall-row row-3">
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="wall-row row-4">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="wall-row row-5">
+              <i></i><i></i><i></i><i></i><i class="missing-brick"></i>
+            </div>
+            <div class="wall-row row-6">
+              <i></i><i></i><i class="missing-brick"></i><i></i>
+            </div>
+          </div>
+
+          <div class="wall-edge"></div>
+
+          <!-- TIJOLOS NO CHÃO -->
+          <div class="ground-bricks">
+            <div class="loose-brick brick-a"></div>
+            <div class="loose-brick brick-b"></div>
+            <div class="loose-brick brick-c"></div>
+            <div class="loose-brick brick-d"></div>
+            <div class="brick-fragment"></div>
+          </div>
+
+          <!-- POEIRA / LUZ -->
+          <div class="dust dust-one"></div>
+          <div class="dust dust-two"></div>
+          <div class="dust dust-three"></div>
+
+          <div class="worksite-floor"></div>
+        </div>
+
+        <div class="worksite-caption">
+          <span>UMA IDEIA GANHANDO FORMA</span>
+          <span>FASE 01 — FUNDAÇÃO</span>
         </div>
       </div>
 
-      <div class="hero-bottom">
-        <span>CONHECIMENTO EM MOVIMENTO</span>
-        <span class="scroll-indicator">ROLE PARA EXPLORAR <i>↓</i></span>
-        <span>BRASIL · 2026</span>
+      <div class="hero-footer">
+        <span>CONHECIMENTO EM MOVIMENTO.</span>
+        <span class="scroll-note">ROLE PARA EXPLORAR <b>↓</b></span>
+        <span>STUDE.ME</span>
       </div>
 
-      <div class="hero-index">01 <span>/</span> 04</div>
+      <div class="hero-index">01 <span>/</span> 03</div>
     </section>
 
     <!-- MANIFESTO -->
-    <section class="manifesto section" id="manifesto">
-      <div class="section-label reveal">
-        <span>01 — NOSSA ESSÊNCIA</span>
-        <span class="label-line"></span>
+    <section class="manifesto section" id="visao">
+      <div class="section-kicker reveal">
+        <span>01</span>
+        <span class="kicker-line"></span>
+        <span>POR TRÁS DA CONSTRUÇÃO</span>
       </div>
 
-      <div class="manifesto-grid">
-        <div class="manifesto-side reveal">
-          <span class="small-caption">UMA IDEIA EM MOVIMENTO</span>
-          <div class="vertical-mark">STUDE / MANIFESTO</div>
+      <div class="manifesto-content">
+        <div class="manifesto-aside reveal">
+          <span class="aside-caption">NOSSA ESSÊNCIA</span>
+          <span class="aside-vertical">STUDE — MANIFESTO</span>
         </div>
 
         <div class="manifesto-main reveal">
           <h2>
-            Aprender não é<br>
-            chegar ao fim.<br>
-            É descobrir <span class="gradient-text">até onde<br>você pode ir.</span>
+            Não estamos<br>
+            construindo<br>
+            apenas um site.<br>
+            Estamos criando<br>
+            <span class="gradient-text">novas possibilidades.</span>
           </h2>
 
           <p>
-            Acreditamos que a educação deve abrir caminhos,
-            despertar perguntas e ampliar horizontes.
-            Não queremos apenas transmitir conhecimento.
-            Queremos ajudar a transformar o modo como as
-            pessoas se relacionam com ele.
+            O Stude nasce de uma ideia simples: o conhecimento
+            pode abrir caminhos que ainda nem imaginamos.
+            Queremos aproximar pessoas, ideias e experiências
+            em um ambiente onde aprender seja também descobrir.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- UNIVERSO -->
-    <section class="universe section" id="universo">
-      <div class="section-label reveal">
-        <span>02 — UM UNIVERSO, MUITAS POSSIBILIDADES</span>
-        <span class="label-line"></span>
+    <!-- ECOSSISTEMA -->
+    <section class="ecosystem section" id="universo">
+      <div class="section-kicker reveal">
+        <span>02</span>
+        <span class="kicker-line"></span>
+        <span>O QUE ESTÁ TOMANDO FORMA</span>
       </div>
 
-      <div class="universe-heading reveal">
-        <h2>Conhecimento em<br><span class="gradient-text">todas as direções.</span></h2>
+      <div class="ecosystem-heading reveal">
+        <h2>Peças diferentes.<br><span class="gradient-text">Um mesmo propósito.</span></h2>
         <p>
-          Diferentes caminhos. Uma mesma essência:
-          tornar o aprendizado uma experiência mais rica.
+          O Stude será a porta de entrada para um conjunto
+          de experiências conectadas pelo conhecimento.
         </p>
       </div>
 
-      <div class="universe-grid">
-        <article class="universe-card card-study reveal">
-          <div class="card-top">
-            <span class="card-number">01</span>
-            <span class="card-symbol">S+</span>
-          </div>
-          <div>
-            <span class="card-category">APRENDIZAGEM</span>
+      <div class="ecosystem-list">
+
+        <article class="ecosystem-item reveal">
+          <div class="ecosystem-index">01</div>
+          <div class="ecosystem-name">
+            <span class="ecosystem-category">APRENDIZAGEM</span>
             <h3>Study<span>+</span></h3>
-            <p>Um espaço para aprender, explorar conteúdos e desenvolver conhecimento.</p>
           </div>
-          <span class="card-arrow">↗</span>
+          <p>
+            Conteúdos, aulas e experiências para aprender
+            e explorar novos conhecimentos.
+          </p>
+          <span class="ecosystem-state">EM DESENVOLVIMENTO</span>
+          <span class="ecosystem-arrow">↗</span>
         </article>
 
-        <article class="universe-card card-praesium reveal">
-          <div class="card-top">
-            <span class="card-number">02</span>
-            <span class="card-symbol">P.</span>
-          </div>
-          <div>
-            <span class="card-category">PRÁTICA & EVOLUÇÃO</span>
+        <article class="ecosystem-item reveal">
+          <div class="ecosystem-index">02</div>
+          <div class="ecosystem-name">
+            <span class="ecosystem-category">PRÁTICA & EVOLUÇÃO</span>
             <h3>PRAESIUM</h3>
-            <p>O conhecimento colocado à prova, com desafios e novas conquistas.</p>
           </div>
-          <span class="card-arrow">↗</span>
+          <p>
+            Desafios, atividades e avaliações para transformar
+            conhecimento em prática.
+          </p>
+          <span class="ecosystem-state">EM DESENVOLVIMENTO</span>
+          <span class="ecosystem-arrow">↗</span>
         </article>
 
-        <article class="universe-card card-sophratio reveal">
-          <div class="card-top">
-            <span class="card-number">03</span>
-            <span class="card-symbol">文</span>
-          </div>
-          <div>
-            <span class="card-category">IDIOMAS & CULTURA</span>
+        <article class="ecosystem-item reveal">
+          <div class="ecosystem-index">03</div>
+          <div class="ecosystem-name">
+            <span class="ecosystem-category">IDIOMAS & CULTURA</span>
             <h3>Sophratio</h3>
-            <p>Novas línguas, novas perspectivas e conexões com o mundo.</p>
           </div>
-          <span class="card-arrow">↗</span>
+          <p>
+            Línguas, culturas e novas formas de se conectar
+            com o mundo.
+          </p>
+          <span class="ecosystem-state">EM DESENVOLVIMENTO</span>
+          <span class="ecosystem-arrow">↗</span>
         </article>
 
-        <article class="universe-card card-cliralq reveal">
-          <div class="card-top">
-            <span class="card-number">04</span>
-            <span class="card-symbol">C.</span>
-          </div>
-          <div>
-            <span class="card-category">DESCOBERTA</span>
+        <article class="ecosystem-item reveal">
+          <div class="ecosystem-index">04</div>
+          <div class="ecosystem-name">
+            <span class="ecosystem-category">DESCOBERTA</span>
             <h3>Cliralq</h3>
-            <p>Um horizonte de possibilidades para experiências de aprendizagem.</p>
           </div>
-          <span class="card-arrow">↗</span>
+          <p>
+            Um espaço de possibilidades para experiências
+            de aprendizagem.
+          </p>
+          <span class="ecosystem-state">EM DESENVOLVIMENTO</span>
+          <span class="ecosystem-arrow">↗</span>
         </article>
+
       </div>
 
-      <p class="universe-footnote reveal">
-        UM ECOSSISTEMA EM CONSTRUÇÃO. UM FUTURO EM DESCOBERTA.
-      </p>
+      <div class="ecosystem-foot reveal">
+        <span class="foot-star">✳</span>
+        <span>UM ECOSSISTEMA EM CONSTRUÇÃO. UM FUTURO EM DESCOBERTA.</span>
+      </div>
     </section>
 
-    <!-- VISÃO -->
-    <section class="vision section" id="visao">
-      <div class="vision-orb"></div>
+    <!-- ENCERRAMENTO -->
+    <section class="closing-section">
+      <div class="closing-glow"></div>
 
-      <div class="section-label reveal">
-        <span>03 — NOSSA VISÃO</span>
-        <span class="label-line"></span>
-      </div>
+      <div class="closing-content reveal">
+        <img src="isotipo.png" alt="" class="closing-symbol">
 
-      <div class="vision-content reveal">
-        <span class="small-caption">O PRÓXIMO PASSO COMEÇA AGORA</span>
-        <h2>O futuro não<br>espera por respostas.<br><span class="gradient-text">Ele começa com perguntas.</span></h2>
+        <span class="closing-overline">TODA GRANDE IDEIA COMEÇA EM ALGUM LUGAR</span>
+
+        <h2>
+          Estamos apenas<br>
+          <span class="gradient-text">começando.</span>
+        </h2>
+
         <p>
-          Estamos preparando algo novo. Uma experiência
-          construída para acompanhar a curiosidade e
-          ampliar as possibilidades de aprender.
+          O próximo passo está sendo preparado.
+          Obrigado por acompanhar o nascimento do Stude.
         </p>
-        <a href="#top" class="button-primary">
-          Voltar ao início <span>↑</span>
-        </a>
+
+        <div class="closing-status">
+          <span class="live-dot"></span>
+          A CONSTRUÇÃO CONTINUA
+        </div>
       </div>
     </section>
+
   </main>
 
-  <!-- RODAPÉ -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <a class="footer-brand" href="#top">
-      <span class="footer-symbol">S</span>
-      <span>Stude<span class="brand-dot">.</span></span>
+    <a href="#inicio" class="footer-brand">
+      <img src="logo-stude.png" alt="Stude">
     </a>
 
-    <span class="footer-copy">© 2026 STUDE.ME</span>
-    <span class="footer-note">CONHECIMENTO EM MOVIMENTO.</span>
+    <div class="footer-center">
+      <span>CONHECIMENTO EM MOVIMENTO.</span>
+    </div>
+
+    <div class="footer-right">
+      <span>© <span id="year">2026</span> STUDE.ME</span>
+      <span class="footer-dot"></span>
+      <span>FEITO PARA O FUTURO.</span>
+    </div>
   </footer>
 
-  <div class="cursor-glow" id="cursorGlow"></div>
 </body>
 </html>
