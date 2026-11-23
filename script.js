@@ -1,21 +1,11 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  // ==========================================
-  // ABERTURA
-  // ==========================================
-
+  // INTRO
   const intro = document.getElementById("intro");
+  window.setTimeout(() => intro?.classList.add("finished"), 2500);
+  window.setTimeout(() => intro?.remove(), 3300);
 
-  window.setTimeout(() => {
-    intro?.remove();
-  }, 3400);
-
-
-  // ==========================================
-  // VÍDEOS
-  // ==========================================
-
+  // PLAYLIST — ordem confirmada
   const videos = [
     { name: "Leonardo", id: "rQE4OpJl0Go" },
     { name: "Kevem", id: "rLpt0BsUfDs" },
@@ -26,209 +16,117 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Williandro", id: "DwWbW9sAIDs" }
   ];
 
-
-  // ==========================================
-  // ELEMENTOS
-  // ==========================================
-
-  const playlist = document.getElementById("playlist");
-  const currentTitle = document.getElementById("currentTitle");
-  const videoTitle = document.getElementById("videoTitle");
-  const playingStatus = document.getElementById("playingStatus");
-
-  const startOverlay = document.getElementById("startOverlay");
-  const startButton = document.getElementById("startButton");
-
-  const fullscreenBtn = document.getElementById("fullscreenBtn");
-  const fullscreenIcon = document.getElementById("fullscreenIcon");
-  const fullscreenText = document.getElementById("fullscreenText");
-  const playerShell = document.getElementById("playerShell");
-
-  const playlistCount = document.getElementById("playlistCount");
-
-
-  // ==========================================
-  // ESTADO
-  // ==========================================
+  const $ = (id) => document.getElementById(id);
+  const playlist = $("playlist");
+  const currentTitle = $("currentTitle");
+  const videoTitle = $("videoTitle");
+  const playingStatus = $("playingStatus");
+  const startOverlay = $("startOverlay");
+  const startButton = $("startButton");
+  const fullscreenBtn = $("fullscreenBtn");
+  const fullscreenText = $("fullscreenText");
+  const playerShell = $("playerShell");
 
   let currentIndex = 0;
   let player = null;
-
   let playerReady = false;
   let started = false;
   let startRequested = false;
   let consecutiveErrors = 0;
+  let apiRequested = false;
 
-
-  // ==========================================
-  // LISTA LATERAL
-  // ==========================================
+  function setStatus(message) {
+    if (playingStatus) playingStatus.textContent = message;
+  }
 
   function renderPlaylist() {
     if (!playlist) return;
-
-    playlist.innerHTML = "";
+    playlist.replaceChildren();
 
     videos.forEach((video, index) => {
-
       const button = document.createElement("button");
-
       button.type = "button";
+      button.className = `playlist-item${index === currentIndex ? " active" : ""}`;
+      button.setAttribute("aria-current", index === currentIndex ? "true" : "false");
+      button.setAttribute("aria-label", `Selecionar entrevista de ${video.name}`);
 
-      button.className =
-        "playlist-item" +
-        (index === currentIndex ? " active" : "");
+      const number = document.createElement("span");
+      number.className = "episode-number";
+      number.textContent = String(index + 1).padStart(2, "0");
 
-      button.setAttribute(
-        "aria-label",
-        `Reproduzir entrevista de ${video.name}`
-      );
+      const info = document.createElement("span");
+      info.className = "episode-info";
 
-      button.innerHTML = `
-        <span class="episode-number">
-          ${String(index + 1).padStart(2, "0")}
-        </span>
+      const name = document.createElement("strong");
+      name.textContent = video.name;
 
-        <span class="episode-info">
-          <strong>${video.name}</strong>
-          <small>ENTREVISTA · 1ª SÉRIE A</small>
-        </span>
+      const detail = document.createElement("small");
+      detail.textContent = "ENTREVISTA · 1ª SÉRIE A";
 
-        <span class="episode-state">
-          ${index === currentIndex ? "▶" : ""}
-        </span>
-      `;
+      info.append(name, detail);
 
-      button.addEventListener("click", () => {
-        selectVideo(index);
-      });
+      const state = document.createElement("span");
+      state.className = "episode-state";
+      state.textContent = index === currentIndex ? "▶" : "";
 
+      button.append(number, info, state);
+      button.addEventListener("click", () => selectVideo(index));
       playlist.appendChild(button);
     });
   }
 
-
-  // ==========================================
-  // ATUALIZA INTERFACE
-  // ==========================================
-
   function updateInterface() {
-
-    const video = videos[currentIndex];
-
-    if (!video) return;
-
-    if (currentTitle) {
-      currentTitle.textContent = video.name;
-    }
-
-    if (videoTitle) {
-      videoTitle.textContent = video.name;
-    }
-
-    if (playlistCount) {
-      playlistCount.textContent =
-        String(videos.length).padStart(2, "0");
-    }
-
+    const name = videos[currentIndex].name;
+    if (currentTitle) currentTitle.textContent = name;
+    if (videoTitle) videoTitle.textContent = name;
     renderPlaylist();
   }
 
-
-  // ==========================================
-  // SELEÇÃO MANUAL
-  // ==========================================
-
   function selectVideo(index) {
-
     if (!videos[index]) return;
-
     currentIndex = index;
-
+    consecutiveErrors = 0;
     updateInterface();
 
-    if (playerReady) {
+    if (!playerReady || !player) return;
 
-      if (started) {
-
-        player.loadVideoById({
-          videoId: videos[currentIndex].id
-        });
-
-      } else {
-
-        player.cueVideoById({
-          videoId: videos[currentIndex].id
-        });
-
-      }
+    if (started) {
+      player.loadVideoById({ videoId: videos[currentIndex].id });
+      setStatus("CARREGANDO...");
+    } else {
+      player.cueVideoById({ videoId: videos[currentIndex].id });
     }
   }
-
-
-  // ==========================================
-  // PRÓXIMO VÍDEO AUTOMATICAMENTE
-  // ==========================================
 
   function nextVideo() {
-
-    if (!playerReady || !started) return;
-
+    if (!playerReady || !player || !started) return;
     currentIndex = (currentIndex + 1) % videos.length;
-
     updateInterface();
-
-    player.loadVideoById({
-      videoId: videos[currentIndex].id
-    });
+    setStatus("CARREGANDO PRÓXIMA ENTREVISTA...");
+    player.loadVideoById({ videoId: videos[currentIndex].id });
   }
 
-
-  // ==========================================
-  // API DO YOUTUBE
-  // ==========================================
-
-  function loadYouTubeAPI() {
-
-    if (window.YT && window.YT.Player) {
-      createPlayer();
+  function startPlayback() {
+    if (!playerReady || !player) {
+      startRequested = true;
+      setStatus("CARREGANDO PLAYER...");
       return;
     }
 
-    window.onYouTubeIframeAPIReady = createPlayer;
-
-    if (
-      document.querySelector(
-        'script[src="https://www.youtube.com/iframe_api"]'
-      )
-    ) {
-      return;
-    }
-
-    const tag = document.createElement("script");
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    tag.async = true;
-
-    document.head.appendChild(tag);
+    started = true;
+    startRequested = false;
+    startOverlay?.classList.add("hidden");
+    setStatus("CARREGANDO...");
+    player.loadVideoById({ videoId: videos[currentIndex].id });
   }
-
-
-  // ==========================================
-  // CRIA PLAYER ÚNICO
-  // ==========================================
 
   function createPlayer() {
-
-    if (player || !window.YT) return;
+    if (player || !window.YT?.Player) return;
 
     player = new YT.Player("videoPlayer", {
-
       width: "100%",
       height: "100%",
-
       videoId: videos[currentIndex].id,
-
       playerVars: {
         autoplay: 0,
         controls: 1,
@@ -237,206 +135,106 @@ document.addEventListener("DOMContentLoaded", () => {
         cc_load_policy: 0,
         iv_load_policy: 3
       },
-
       events: {
-
         onReady: () => {
-
           playerReady = true;
-
           if (startRequested) {
             startPlayback();
           } else {
-            player.cueVideoById({
-              videoId: videos[currentIndex].id
-            });
+            player.cueVideoById({ videoId: videos[currentIndex].id });
           }
         },
-
-
         onStateChange: (event) => {
-
-          // REPRODUZINDO
           if (event.data === YT.PlayerState.PLAYING) {
-
             consecutiveErrors = 0;
-
-            if (playingStatus) {
-              playingStatus.textContent = "REPRODUZINDO";
-            }
-
+            setStatus("REPRODUZINDO");
             startOverlay?.classList.add("hidden");
-          }
-
-
-          // PAUSADO
-          if (event.data === YT.PlayerState.PAUSED) {
-
-            if (playingStatus) {
-              playingStatus.textContent = "PAUSADO";
-            }
-          }
-
-
-          // FINALIZADO
-          if (event.data === YT.PlayerState.ENDED) {
+          } else if (event.data === YT.PlayerState.PAUSED) {
+            setStatus("PAUSADO");
+          } else if (event.data === YT.PlayerState.BUFFERING) {
+            setStatus("CARREGANDO...");
+          } else if (event.data === YT.PlayerState.ENDED) {
             nextVideo();
           }
-
         },
-
-
         onError: (event) => {
-
-          console.warn(
-            "Erro no player do YouTube:",
-            event.data
-          );
-
-          if (playingStatus) {
-            playingStatus.textContent = "VÍDEO INDISPONÍVEL";
-          }
-
+          console.warn("Erro no player do YouTube:", event.data);
+          setStatus("VÍDEO INDISPONÍVEL");
           if (!started) return;
 
-          consecutiveErrors++;
-
+          consecutiveErrors += 1;
           if (consecutiveErrors >= videos.length) {
-
-            if (playingStatus) {
-              playingStatus.textContent =
-                "NENHUM VÍDEO DISPONÍVEL";
-            }
-
+            setStatus("NÃO FOI POSSÍVEL REPRODUZIR OS VÍDEOS");
             return;
           }
 
-          window.setTimeout(() => {
-            nextVideo();
-          }, 1200);
+          window.setTimeout(nextVideo, 1000);
         }
-
       }
-
     });
-
   }
 
-
-  // ==========================================
-  // INÍCIO DA REPRODUÇÃO
-  // ==========================================
-
-  function startPlayback() {
-
-    if (!playerReady || !player) return;
-
-    started = true;
-    startRequested = false;
-
-    startOverlay?.classList.add("hidden");
-
-    if (playingStatus) {
-      playingStatus.textContent = "CARREGANDO...";
+  function loadYouTubeAPI() {
+    if (window.YT?.Player) {
+      createPlayer();
+      return;
     }
 
-    player.loadVideoById({
-      videoId: videos[currentIndex].id
-    });
+    if (apiRequested) return;
+    apiRequested = true;
+
+    const previousCallback = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      if (typeof previousCallback === "function") previousCallback();
+      createPlayer();
+    };
+
+    if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
+      const script = document.createElement("script");
+      script.src = "https://www.youtube.com/iframe_api";
+      script.async = true;
+      document.head.appendChild(script);
+    }
   }
 
-
+  // BOTÃO DE INÍCIO
   if (startButton) {
-
-    startButton.addEventListener("click", () => {
-
-      started = true;
-
-      if (!playerReady) {
-
-        startRequested = true;
-
-        if (playingStatus) {
-          playingStatus.textContent = "CARREGANDO PLAYER...";
-        }
-
-        return;
-      }
-
-      startPlayback();
-
-    });
-
+    startButton.addEventListener("click", startPlayback);
   }
 
-
-  // ==========================================
   // TELA CHEIA
-  // ==========================================
-
   if (fullscreenBtn && playerShell) {
-
     fullscreenBtn.addEventListener("click", async () => {
-
       try {
-
-        if (!document.fullscreenElement) {
-
-          await playerShell.requestFullscreen();
-
-        } else {
-
+        if (document.fullscreenElement === playerShell) {
           await document.exitFullscreen();
-
+        } else if (!document.fullscreenElement) {
+          await playerShell.requestFullscreen();
+        } else {
+          await document.exitFullscreen();
+          await playerShell.requestFullscreen();
         }
-
       } catch (error) {
-
-        console.error(
-          "Não foi possível ativar a tela cheia:",
-          error
-        );
-
+        console.error("Não foi possível ativar a tela cheia:", error);
+        setStatus("TELA CHEIA INDISPONÍVEL NESTE NAVEGADOR");
       }
-
     });
-
 
     document.addEventListener("fullscreenchange", () => {
-
-      const isFullscreen =
-        Boolean(document.fullscreenElement);
-
-      if (fullscreenIcon) {
-        fullscreenIcon.textContent = "⛶";
-      }
-
+      const isFullscreen = document.fullscreenElement === playerShell;
       if (fullscreenText) {
-
         fullscreenText.textContent = isFullscreen
           ? "Sair da tela cheia"
-          : "Tela cheia";
-
+          : "Assistir em tela cheia";
       }
-
       fullscreenBtn.setAttribute(
         "aria-label",
-        isFullscreen
-          ? "Sair da tela cheia"
-          : "Abrir em tela cheia"
+        isFullscreen ? "Sair da tela cheia" : "Assistir vídeo em tela cheia"
       );
-
     });
-
   }
 
-
-  // ==========================================
   // INICIALIZAÇÃO
-  // ==========================================
-
   updateInterface();
-
   loadYouTubeAPI();
-
 });
