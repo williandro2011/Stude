@@ -86,6 +86,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
       button.addEventListener("click", () => {
         selectVideo(index);
+
+        // CONTROLE DE TELA CHEIA
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+const fullscreenIcon = document.getElementById("fullscreenIcon");
+const fullscreenText = document.getElementById("fullscreenText");
+const playerShell = document.getElementById("playerShell");
+
+if (fullscreenBtn && playerShell) {
+  fullscreenBtn.addEventListener("click", async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await playerShell.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (error) {
+      console.error("Não foi possível alterar a tela cheia:", error);
+    }
+  });
+
+  document.addEventListener("fullscreenchange", () => {
+    const isFullscreen = Boolean(document.fullscreenElement);
+
+    fullscreenIcon.textContent = isFullscreen ? "⛶" : "⛶";
+    fullscreenText.textContent = isFullscreen
+      ? "Sair da tela cheia"
+      : "Tela cheia";
+
+    fullscreenBtn.setAttribute(
+      "aria-label",
+      isFullscreen ? "Sair da tela cheia" : "Abrir em tela cheia"
+    );
+  });
+}
       });
 
       playlist.appendChild(button);
