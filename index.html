@@ -4,6 +4,294 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d1b">
+
+  <title>Stude | Histórias que merecem ser ouvidas</title>
+
+  <meta
+    name="description"
+    content="Stude apresenta: histórias, experiências e entrevistas."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- INTRODUÇÃO -->
+  <div class="intro" id="intro">
+    <div class="intro-glow"></div>
+
+    <img
+      src="logo-stude.png"
+      alt="Stude"
+      class="intro-logo"
+    >
+
+    <p>CONHECIMENTO EM MOVIMENTO.</p>
+  </div>
+
+  <!-- CABEÇALHO -->
+  <header class="site-header">
+    <div class="header-brand">
+      <img
+        src="logo-stude.png"
+        alt="Stude"
+        class="header-logo"
+      >
+    </div>
+
+    <div class="header-info">
+      <span class="eyebrow">STUDE APRESENTA</span>
+      <span class="class-label">1ª SÉRIE A</span>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="main-content">
+
+    <section class="presentation">
+      <div class="presentation-text">
+        <span class="section-tag">
+          <span class="tag-dot"></span>
+          ENTREVISTAS
+        </span>
+
+        <h1>
+          Histórias que merecem<br>
+          ser <span>ouvidas.</span>
+        </h1>
+
+        <p>
+          Cada pessoa tem uma história. Cada conversa,
+          uma nova perspectiva.
+        </p>
+      </div>
+    </section>
+
+    <!-- ÁREA DOS VÍDEOS -->
+    <section class="video-section">
+
+      <div class="player-column">
+
+        <!-- TÍTULO DO PLAYER E LOGO -->
+        <div class="player-heading">
+
+          <div class="player-brand">
+            <img
+              src="logo-stude.png"
+              alt="Stude"
+              class="player-logo"
+            >
+          </div>
+
+          <div class="player-heading-text">
+            <span class="eyebrow">AGORA EM EXIBIÇÃO</span>
+
+            <h2 id="currentTitle">
+              Entrevista com Leonardo
+            </h2>
+          </div>
+
+          <button
+            class="fullscreen-btn"
+            id="fullscreenBtn"
+            type="button"
+            aria-label="Abrir em tela cheia"
+          >
+            <span id="fullscreenIcon">⛶</span>
+            <span id="fullscreenText">Tela cheia</span>
+          </button>
+
+        </div>
+
+        <!-- PLAYER -->
+        <div class="player-frame" id="playerShell">
+
+          <div class="video-player" id="videoPlayer"></div>
+
+          <!-- BOTÃO PARA INICIAR A REPRODUÇÃO -->
+          <div class="start-overlay" id="startOverlay">
+
+            <div class="start-content">
+
+              <div class="play-icon">
+                <span>▶</span>
+              </div>
+
+              <h3>As histórias começam aqui.</h3>
+
+              <p>
+                Clique para iniciar a sequência de entrevistas.
+              </p>
+
+              <button
+                class="start-button"
+                id="startButton"
+                type="button"
+              >
+                Iniciar reprodução
+                <span>→</span>
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- INFORMAÇÕES DO VÍDEO -->
+        <div class="video-information">
+
+          <div class="video-information-text">
+            <span class="eyebrow">STUDE ORIGINAL</span>
+
+            <h3 id="videoTitle">
+              Leonardo
+            </h3>
+          </div>
+
+          <div class="playing-indicator">
+            <span class="playing-dot"></span>
+            <span id="playingStatus">AGUARDANDO</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- LISTA DE ENTREVISTAS -->
+      <aside class="playlist-column">
+
+        <div class="playlist-heading">
+
+          <div>
+            <span class="eyebrow">CONTINUE EXPLORANDO</span>
+            <h2>Entrevistas</h2>
+          </div>
+
+          <span class="playlist-count" id="playlistCount">
+            07
+          </span>
+
+        </div>
+
+        <div
+          class="playlist"
+          id="playlist"
+          aria-label="Lista de entrevistas"
+        >
+          <!-- A lista é preenchida pelo script.js -->
+        </div>
+
+        <div class="playlist-footer">
+          <span class="playlist-footer-dot"></span>
+          <span>Uma sequência de histórias.</span>
+        </div>
+
+      </aside>
+
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+
+    <div class="footer-brand">
+      <img
+        src="isotipo.png"
+        alt=""
+        class="footer-isotipo"
+      >
+
+      <span>STUDE</span>
+    </div>
+
+    <p>
+      Conhecimento em movimento.
+    </p>
+
+    <span class="footer-year">
+      © 2026 STUDE
+    </span>
+
+  </footer>
+
+  <!-- YOUTUBE IFRAME API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- SCRIPT PRINCIPAL -->
+  <script src="script.js"></script>
+
+  <!-- CONTROLE DE TELA CHEIA -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const fullscreenBtn =
+        document.getElementById("fullscreenBtn");
+
+      const fullscreenIcon =
+        document.getElementById("fullscreenIcon");
+
+      const fullscreenText =
+        document.getElementById("fullscreenText");
+
+      const playerShell =
+        document.getElementById("playerShell");
+
+      if (!fullscreenBtn || !playerShell) return;
+
+      fullscreenBtn.addEventListener("click", async () => {
+        try {
+          if (!document.fullscreenElement) {
+            await playerShell.requestFullscreen();
+          } else {
+            await document.exitFullscreen();
+          }
+        } catch (error) {
+          console.error(
+            "Não foi possível alterar a tela cheia:",
+            error
+          );
+        }
+      });
+
+      document.addEventListener("fullscreenchange", () => {
+        const isFullscreen =
+          Boolean(document.fullscreenElement);
+
+        fullscreenIcon.textContent = "⛶";
+
+        fullscreenText.textContent = isFullscreen
+          ? "Sair da tela cheia"
+          : "Tela cheia";
+
+        fullscreenBtn.setAttribute(
+          "aria-label",
+          isFullscreen
+            ? "Sair da tela cheia"
+            : "Abrir em tela cheia"
+        );
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080b14">
   <meta name="description" content="Stude — Entrevistas da 1ª Série A.">
 
