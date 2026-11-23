@@ -137,21 +137,34 @@ button { font: inherit; }
 
 .player-brand-aura {
   position: relative;
-  width: 94px;
-  min-width: 94px;
-  height: 42px;
+  width: 125px;
+  min-width: 125px;
+  height: 54px;
   display: grid;
   place-items: center;
   border-right: 1px solid rgba(173, 197, 236, .15);
 }
+
 .player-brand-aura::before {
   content: "";
   position: absolute;
-  inset: -20px 5px;
-  background: radial-gradient(ellipse, rgba(105, 199, 255, .20), rgba(154, 130, 255, .10) 48%, transparent 72%);
-  filter: blur(8px);
+  inset: -24px 2px;
+  background: radial-gradient(
+    ellipse,
+    rgba(105, 199, 255, .25),
+    rgba(154, 130, 255, .14) 48%,
+    transparent 72%
+  );
+  filter: blur(10px);
 }
-.player-logo { position: relative; z-index: 1; width: 68px; max-height: 30px; object-fit: contain; }
+
+.player-logo {
+  position: relative;
+  z-index: 1;
+  width: 100px;
+  max-height: 44px;
+  object-fit: contain;
+}
 .player-heading-copy { min-width: 0; }
 .player-heading-copy .eyebrow { font-size: 8px; }
 .player-heading-copy h2 { margin: 4px 0 0; font-size: 16px; font-weight: 800; letter-spacing: -.025em; }
